@@ -9,6 +9,7 @@ Para esto necesitamos:
 
 ### Obtener información de una pelicula 
 **Clase WikipediaService**
+
 *fun getInfo(movieTitle: String, movieYear: Integer):WikipediaInfoResponse*
 
 Retorna información sobre una película recibida por parámetro a través de un objeto WikipediaInfoResponse. 
