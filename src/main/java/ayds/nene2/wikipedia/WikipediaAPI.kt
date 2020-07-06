@@ -1,4 +1,4 @@
-package ayds.nene2.Wikipedia.external.wikipedia
+package ayds.nene2.wikipedia
 
 import retrofit2.Call
 import retrofit2.http.GET

@@ -1,4 +1,4 @@
-package ayds.nene2.Wikipedia.external.wikipedia
+package ayds.nene2.wikipedia
 
 import com.google.gson.Gson
 import com.google.gson.JsonElement
@@ -6,10 +6,11 @@ import com.google.gson.JsonObject
 
 interface WikipediaResponseToWikipediaInfoResolver {
 
-    fun getInfoFromExternalData(body: String?, title: String): WikipediaInfoResponse
+    fun getInfoFromExternalData(body: String?, title: String): WikipediaInfo
 }
 
-internal class WikipediaResponseToWikipediaInfoResolverImpl : WikipediaResponseToWikipediaInfoResolver {
+internal class WikipediaResponseToWikipediaInfoResolverImpl :
+    WikipediaResponseToWikipediaInfoResolver {
 
     private val SNIPPET = "snippet"
     private val PAGE_ID = "pageid"
@@ -32,17 +33,16 @@ internal class WikipediaResponseToWikipediaInfoResolverImpl : WikipediaResponseT
         return jsonObject.get(SEARCH).getAsJsonArray().iterator()
     }
 
-    override fun getInfoFromExternalData(body: String?, title: String): WikipediaInfoResponse {
+    override fun getInfoFromExternalData(body: String?, title: String): WikipediaInfo {
 
         val result = getJsonMovieFromAPI(body);
         val extract = result.get(SNIPPET)
         val pageId = result.get(PAGE_ID).asString
         val summary = getSummary(extract,pageId);
-        val toReturn = WikipediaInfoResponse()
+        val toReturn = WikipediaInfo()
         toReturn.title = title
         toReturn.summary = summary!!
         toReturn.imageUrl = WIKIPEDIA_LOGO_URL
-        toReturn.source = 1
         toReturn.pageUrl = "https://en.wikipedia.org/?curid="+pageId
         return toReturn
     }
