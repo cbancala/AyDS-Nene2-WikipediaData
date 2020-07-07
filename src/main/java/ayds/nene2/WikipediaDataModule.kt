@@ -16,7 +16,7 @@ object WikipediaDataModule {
     private fun getWikipediaAPI(): WikipediaAPI = retrofit.create(
         WikipediaAPI::class.java)
 
-    val WIKIPEDIA_SERVICE: ayds.nene2.WikipediaService =
+    val wikipediaService: ayds.nene2.WikipediaService =
         WikipediaService(
             getWikipediaAPI(),
             WikipediaResponseToWikipediaInfoResolverImpl()

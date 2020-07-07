@@ -24,5 +24,6 @@ Retorna información sobre una película recibida por parámetro a través de un
 
 *Casos especiales:*
 * En caso perder conexión de red se lanza una excepción. 
+* En caso de no encontrar una determinada película, también lanza una excepción. 
 
 **Ne-ne 2: Christian Bancalá, Dylan Barbona, Facundo Gonzalo, Yasmín Pie López.**
